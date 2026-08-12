@@ -1,0 +1,52 @@
+[package]
+name = "treetop-cli"
+version = "0.0.1"
+edition = "2024"
+description = "Command-line client and interactive REPL for Treetop authorization servers"
+license = "MIT"
+repository = "https://github.com/terjekv/treetop-cli"
+publish = false
+rust-version = "1.88"
+build = "build.rs"
+autobenches = false
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive", "env"] }
+colored = "3"
+dirs = "6"
+rustyline = "18"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tabled = "0.21"
+tokio = { version = "1", features = ["fs", "macros", "rt-multi-thread", "sync", "time"] }
+toml = "1"
+treetop-client = "=0.0.2"
+uuid = { version = "1", features = ["v4"] }
+
+[dev-dependencies]
+assert_cmd = "2"
+gungraun = "0.19"
+predicates = "3"
+rstest = "0.26"
+tempfile = "3"
+wiremock = "0.6"
+
+[profile.release]
+codegen-units = 1
+lto = "fat"
+opt-level = "z"
+panic = "abort"
+strip = "symbols"
+
+[[bench]]
+name = "cli_matrix_simple_callgrind"
+harness = false
+
+[[bench]]
+name = "cli_matrix_bracketed_callgrind"
+harness = false
+
+[[bench]]
+name = "cli_matrix_with_attrs_callgrind"
+harness = false
