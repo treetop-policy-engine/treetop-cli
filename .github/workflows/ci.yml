@@ -111,6 +111,84 @@ jobs:
           toolchain: ${{ matrix.toolchain }}
           args: "--locked --release"
 
+  server-compatibility:
+    name: Server compatibility (${{ matrix.server-version }})
+    if: "!startsWith(github.ref, 'refs/tags/')"
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        server-version:
+          - v0.0.10
+          - v0.0.11
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Build CLI
+        run: cargo build --locked
+
+      - name: Exercise commands against treetop-rest
+        env:
+          SERVER_IMAGE: ghcr.io/terjekv/treetop-rest:${{ matrix.server-version }}
+        run: |
+          set -euo pipefail
+
+          container_name="treetop-cli-compat-${{ matrix.server-version }}"
+          policy_file="$(mktemp)"
+          cleanup() {
+            docker rm -f "$container_name" >/dev/null 2>&1 || true
+            rm -f "$policy_file"
+          }
+          trap cleanup EXIT
+
+          docker run -d \
+            --name "$container_name" \
+            -e TREETOP_LISTEN=0.0.0.0 \
+            -e TREETOP_CLIENT_ALLOWLIST='*' \
+            -e TREETOP_ALLOW_UPLOAD=true \
+            -e RUST_LOG=warn \
+            -p 127.0.0.1::9999 \
+            "$SERVER_IMAGE"
+
+          port="$(docker port "$container_name" 9999/tcp | sed -n 's/.*://p')"
+          server_url="http://127.0.0.1:$port"
+          token=""
+          for _ in $(seq 1 60); do
+            logs="$(docker logs "$container_name" 2>&1)"
+            token="$(printf '%s' "$logs" | sed -n \
+              's/.*"token"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1)"
+            if curl --fail --silent --max-time 2 "$server_url/livez" >/dev/null && \
+              [ -n "$token" ]; then
+              break
+            fi
+            sleep 1
+          done
+          test -n "$token"
+
+          printf '%s\n' \
+            'permit (' \
+            '    principal == User::"alice",' \
+            '    action == Action::"view",' \
+            '    resource == Document::"doc-1"' \
+            ');' > "$policy_file"
+
+          cli=target/debug/treetop-cli
+          "$cli" --server-url "$server_url" --json status
+          "$cli" --server-url "$server_url" --json version
+          "$cli" --server-url "$server_url" --json policies
+          "$cli" --server-url "$server_url" --json schema
+          "$cli" --server-url "$server_url" metrics
+          "$cli" --server-url "$server_url" --json upload \
+            --file "$policy_file" --token "$token" --raw
+          "$cli" --server-url "$server_url" --json check \
+            --principal alice --action view \
+            --resource-type Document --resource-id doc-1
+
+          curl --fail --silent "$server_url/readyz" >/dev/null
+          curl --fail --silent "$server_url/openapi.json" >/dev/null
+
   verify-tag-main-ci-success:
     name: Verify tagged commit already passed CI on main
     if: startsWith(github.ref, 'refs/tags/v')

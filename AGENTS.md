@@ -22,5 +22,11 @@
 ## Releases
 
 - The package is GitHub-binary-only and must retain `publish = false`.
+- Before preparing a release commit, update all Rust dependencies and GitHub Actions to their
+  latest stable versions, and pin every Action to its full commit SHA. Refresh `Cargo.lock`, review
+  upstream release notes for compatibility and MSRV changes, and complete the repository's full
+  verification and security checks on the resulting dependency set.
+- Land dependency and GitHub Actions updates before the version-bump release commit so the signed
+  release tag points at a green commit that already contains every update.
 - Sign commits and annotated tags. Tags must point to the exact green `main` release commit.
 - Keep archive names and checksum files aligned with `RELEASING.md`.

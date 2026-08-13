@@ -17,6 +17,10 @@ Tests that exercise HTTP behavior must bind an ephemeral loopback server and mus
 or a public service. Add command-level coverage for output, configuration precedence, failure exit
 status, and secret redaction when changing those contracts.
 
+CI separately exercises the built CLI against the published full-target treetop-rest images listed
+in [COMPATIBILITY.md](COMPATIBILITY.md). Keep that job and the compatibility documentation aligned
+when adding a supported server release; ordinary Rust tests must remain Docker-free.
+
 ## Architecture
 
 Keep `src/main.rs` as a thin process boundary. Command parsing and execution belong in `src/app.rs`;
