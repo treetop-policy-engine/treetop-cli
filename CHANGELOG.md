@@ -6,6 +6,11 @@ All notable changes to this project are documented in this file. The format foll
 
 ## [Unreleased]
 
+### Changed
+
+- Verify the CLI command surface against treetop-rest v0.0.10 and the server-only v0.0.11 release,
+  and extend the documented stable client contract through v0.0.11.
+
 ## [0.0.1] - 2026-08-13
 
 ### Added
