@@ -1,21 +1,25 @@
 # treetop-cli
 
 `treetop-cli` is the standalone command-line client and interactive REPL for
-[Treetop](https://github.com/terjekv/treetop-rest) authorization servers. It uses the official
-[`treetop-client`](https://github.com/terjekv/treetop-client) crate for every HTTP operation.
+[Treetop](https://github.com/treetop-policy-engine/treetop-rest) authorization servers. It uses the
+official [`treetop-client`](https://github.com/treetop-policy-engine/treetop-client) crate for
+every HTTP operation.
 
 Version 0.0.1 is extracted from the CLI shipped with
-[treetop-rest v0.0.10](https://github.com/terjekv/treetop-rest/tree/v0.0.10/src/cli). The repository
+[treetop-rest v0.0.10](https://github.com/treetop-policy-engine/treetop-rest/tree/v0.0.10/src/cli).
+The repository
 starts with fresh history; that tag is the canonical source provenance for the legacy implementation.
 
 ## Installation
 
 Download the archive for your platform from the
-[latest release](https://github.com/terjekv/treetop-cli/releases/latest), verify the adjacent
+[latest release](https://github.com/treetop-policy-engine/treetop-cli/releases/latest), verify the
+adjacent
 SHA-256 file, and place `treetop-cli` (or `treetop-cli.exe`) on your `PATH`.
 
 Rolling builds from the latest green `main` are published as
-[`main-latest`](https://github.com/terjekv/treetop-cli/releases/tag/main-latest). They report a
+[`main-latest`](https://github.com/treetop-policy-engine/treetop-cli/releases/tag/main-latest).
+They report a
 version such as `v0.0.1+main.g0123456789ab`; stable release builds report `v0.0.1`.
 
 The CLI is distributed as GitHub release binaries only and is not published to crates.io.

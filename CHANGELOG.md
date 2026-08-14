@@ -8,6 +8,8 @@ All notable changes to this project are documented in this file. The format foll
 
 ### Changed
 
+- Move the canonical source repository and release downloads to the `treetop-policy-engine`
+  organization, and use organization-owned server images in compatibility checks.
 - Verify the CLI command surface against treetop-rest v0.0.10 and the server-only v0.0.11 release,
   and extend the documented stable client contract through v0.0.11.
 
@@ -26,5 +28,5 @@ All notable changes to this project are documented in this file. The format foll
 - Add stable/beta/nightly CI, Markdown lint, rolling `main-latest` binaries, and signed immutable
   release artifacts for static Linux x86_64/ARM64, Apple Silicon macOS, and Windows x86_64.
 
-[Unreleased]: https://github.com/terjekv/treetop-cli/compare/v0.0.1...HEAD
-[0.0.1]: https://github.com/terjekv/treetop-cli/releases/tag/v0.0.1
+[Unreleased]: https://github.com/treetop-policy-engine/treetop-cli/compare/v0.0.1...HEAD
+[0.0.1]: https://github.com/treetop-policy-engine/treetop-cli/releases/tag/v0.0.1
