@@ -20,7 +20,7 @@ SHA-256 file, and place `treetop-cli` (or `treetop-cli.exe`) on your `PATH`.
 Rolling builds from the latest green `main` are published as
 [`main-latest`](https://github.com/treetop-policy-engine/treetop-cli/releases/tag/main-latest).
 They report a
-version such as `v0.0.1+main.g0123456789ab`; stable release builds report `v0.0.1`.
+version such as `v0.0.2+main.g0123456789ab`; stable release builds report `v0.0.2`.
 
 The CLI is distributed as GitHub release binaries only and is not published to crates.io.
 
@@ -119,8 +119,8 @@ Use `show` to inspect active settings and paths, and `history` to list command h
 
 ## Compatibility
 
-Development builds use exactly `treetop-client = "=0.0.3"` and are tested against treetop-rest
-v0.0.10 through v0.0.12. Version 0.0.1 remains paired with client 0.0.2. See
+Version 0.0.2 uses exactly `treetop-client = "=0.0.3"` and is tested against treetop-rest v0.0.10
+through v0.0.12. Version 0.0.1 remains paired with client 0.0.2. See
 [COMPATIBILITY.md](COMPATIBILITY.md) for the tested server matrix.
 
 ## Development

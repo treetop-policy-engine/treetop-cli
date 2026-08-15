@@ -1,6 +1,6 @@
 [package]
 name = "treetop-cli"
-version = "0.0.1"
+version = "0.0.2"
 edition = "2024"
 description = "Command-line client and interactive REPL for Treetop authorization servers"
 license = "MIT"
