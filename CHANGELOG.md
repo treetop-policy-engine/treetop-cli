@@ -10,8 +10,10 @@ All notable changes to this project are documented in this file. The format foll
 
 - Move the canonical source repository and release downloads to the `treetop-policy-engine`
   organization, and use organization-owned server images in compatibility checks.
-- Verify the CLI command surface against treetop-rest v0.0.10 and the server-only v0.0.11 release,
-  and extend the documented stable client contract through v0.0.11.
+- Update to `treetop-client` 0.0.3, verify the CLI command surface against treetop-rest v0.0.10
+  through v0.0.12, and extend the documented stable client contract through v0.0.12.
+- Refresh Rust dependencies to the latest releases compatible with Rust 1.88 and pin GitHub
+  Actions to their latest stable revisions.
 
 ## [0.0.1] - 2026-08-13
 
