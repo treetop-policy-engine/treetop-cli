@@ -6,6 +6,8 @@ All notable changes to this project are documented in this file. The format foll
 
 ## [Unreleased]
 
+## [0.0.2] - 2026-08-15
+
 ### Changed
 
 - Move the canonical source repository and release downloads to the `treetop-policy-engine`
@@ -30,5 +32,6 @@ All notable changes to this project are documented in this file. The format foll
 - Add stable/beta/nightly CI, Markdown lint, rolling `main-latest` binaries, and signed immutable
   release artifacts for static Linux x86_64/ARM64, Apple Silicon macOS, and Windows x86_64.
 
-[Unreleased]: https://github.com/treetop-policy-engine/treetop-cli/compare/v0.0.1...HEAD
+[Unreleased]: https://github.com/treetop-policy-engine/treetop-cli/compare/v0.0.2...HEAD
+[0.0.2]: https://github.com/treetop-policy-engine/treetop-cli/releases/tag/v0.0.2
 [0.0.1]: https://github.com/treetop-policy-engine/treetop-cli/releases/tag/v0.0.1

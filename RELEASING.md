@@ -35,4 +35,4 @@ package-manager crypto dependencies on macOS, uses the Windows static CRT, and s
 with `--version` before publishing.
 
 Successful `main` builds update the mutable `main-latest` release and use build metadata such as
-`v0.0.1+main.g0123456789ab`. Stable tag builds report the plain tagged version.
+`v0.0.2+main.g0123456789ab`. Stable tag builds report the plain tagged version.

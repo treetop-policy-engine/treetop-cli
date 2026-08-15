@@ -2,7 +2,7 @@
 
 | CLI | Client | Full server target | Stable server contract |
 | --- | --- | --- | --- |
-| Unreleased | exactly 0.0.3 | treetop-rest 0.0.10 through 0.0.12 | treetop-rest 0.0.4 through 0.0.12 |
+| 0.0.2 | exactly 0.0.3 | treetop-rest 0.0.10 through 0.0.12 | treetop-rest 0.0.4 through 0.0.12 |
 | 0.0.1 | exactly 0.0.2 | treetop-rest 0.0.10 and 0.0.11 | treetop-rest 0.0.4 through 0.0.11 |
 
 The stable contract covers health, version, policy download, and authorization. The full target also
