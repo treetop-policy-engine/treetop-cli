@@ -6,6 +6,20 @@ All notable changes to this project are documented in this file. The format foll
 
 ## [Unreleased]
 
+### Security
+
+- Update locked h2 to 0.4.19 and chacha20 to 0.10.2. Use tabled 0.22 to remove
+  the unmaintained proc-macro-error2 dependency and its future compatibility warning.
+
+### Changed
+
+- Correct the advertised minimum Rust version to 1.89, matching the file-lock APIs
+  already used by Rustyline 18. CI now verifies that minimum explicitly.
+
+- Preserve label configuration and generation metadata from the updated Rust client in JSON output.
+  Human authorization output now shows the engine generation and available label identifier alongside
+  the policy hash. Generation is local to one engine instance and can restart on replacement.
+
 ## [0.0.2] - 2026-08-15
 
 ### Changed
