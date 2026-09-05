@@ -13,6 +13,8 @@ All notable changes to this project are documented in this file. The format foll
 
 ### Changed
 
+- Verify the command surface against REST v0.0.16 while retaining the existing
+  v0.0.10 through v0.0.12 compatibility checks.
 - Correct the advertised minimum Rust version to 1.89, matching the file-lock APIs
   already used by Rustyline 18. CI now verifies that minimum explicitly.
 

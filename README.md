@@ -119,8 +119,9 @@ Use `show` to inspect active settings and paths, and `history` to list command h
 
 ## Compatibility
 
-Version 0.0.2 uses exactly `treetop-client = "=0.0.3"` and is tested against treetop-rest v0.0.10
-through v0.0.12. Version 0.0.1 remains paired with client 0.0.2. See
+The unreleased CLI uses exactly `treetop-client = "=0.0.4"` and is tested against treetop-rest
+v0.0.10 through v0.0.12, and v0.0.16. Version 0.0.2 remains paired with client 0.0.3;
+version 0.0.1 remains paired with client 0.0.2. See
 [COMPATIBILITY.md](COMPATIBILITY.md) for the tested server matrix.
 
 ## Development
