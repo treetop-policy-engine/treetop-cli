@@ -123,7 +123,7 @@ jobs:
           args: "--locked --release"
 
   server-current:
-    name: Current REST 0.1.0 candidate
+    name: Current REST 0.1.0 release
     if: "!startsWith(github.ref, 'refs/tags/')"
     runs-on: ubuntu-24.04
     timeout-minutes: 30
@@ -131,22 +131,12 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
-      - name: Check out exact REST candidate
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          repository: treetop-policy-engine/treetop-rest
-          ref: fce2e1fa8f44244c201dd87731ba63e5f203a8e0
-          path: .candidate-rest
-          persist-credentials: false
-      - name: Build candidate server
-        run: docker build -t treetop-rest-candidate:0.1.0 .candidate-rest
-
       - name: Build CLI
         run: cargo build --locked
 
       - name: Exercise commands against treetop-rest
         env:
-          SERVER_IMAGE: treetop-rest-candidate:0.1.0
+          SERVER_IMAGE: ghcr.io/treetop-policy-engine/treetop-rest@sha256:d1fdd7536f31dde0b922f9516baa16a1f5ee7ecd4ab1c0892afd555128acc43e
         run: |
           set -euo pipefail
 

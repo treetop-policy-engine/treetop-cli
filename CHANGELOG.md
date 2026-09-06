@@ -13,10 +13,10 @@ All notable changes to this project are documented in this file. The format foll
 - Adopt the strict Rust SDK and REST 0.1.0 contract. Required metadata is validated
   before display, including schema configuration, batch limits, and complete state
   versions. Remove legacy unlimited-batch and omitted-schema fallbacks.
-- Replace the historical compatibility matrix with exact candidate integration.
+- Replace the historical compatibility matrix with immutable release integration.
   Use declared label targets and format 2 bundles; see [MIGRATION.md](MIGRATION.md).
-- Pin the exact unmerged SDK for coordinated verification. Merging and release
-  remain subject to user approval and prerequisite publication.
+- Require the published Rust SDK 0.1.0 package and pin the released REST 0.1.0
+  image for integration; remove temporary candidate Git dependencies.
 
 ### Security
 
@@ -57,6 +57,7 @@ All notable changes to this project are documented in this file. The format foll
 - Add stable/beta/nightly CI, Markdown lint, rolling `main-latest` binaries, and signed immutable
   release artifacts for static Linux x86_64/ARM64, Apple Silicon macOS, and Windows x86_64.
 
-[Unreleased]: https://github.com/treetop-policy-engine/treetop-cli/compare/v0.0.2...HEAD
+[Unreleased]: https://github.com/treetop-policy-engine/treetop-cli/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/treetop-policy-engine/treetop-cli/compare/v0.0.2...v0.1.0
 [0.0.2]: https://github.com/treetop-policy-engine/treetop-cli/releases/tag/v0.0.2
 [0.0.1]: https://github.com/treetop-policy-engine/treetop-cli/releases/tag/v0.0.1

@@ -17,7 +17,7 @@ Tests that exercise HTTP behavior must bind an ephemeral loopback server and mus
 or a public service. Add command-level coverage for output, configuration precedence, failure exit
 status, and secret redaction when changing those contracts.
 
-CI separately builds the exact pinned REST candidate and exercises the full command
+CI separately uses the immutable REST release image and exercises the full command
 surface against it. Update the pin and migration documentation together. Ordinary
 Rust tests remain Docker-free and use ephemeral loopback services.
 

@@ -6,9 +6,9 @@ publish this package to crates.io.
 ## Release gates
 
 1. Confirm the exact `treetop-client` version is published and the lockfile contains it.
-2. Update `Cargo.toml`, `Cargo.lock`, `CHANGELOG.md`, and `COMPATIBILITY.md` together.
+2. Update `Cargo.toml`, `Cargo.lock`, `CHANGELOG.md`, and `MIGRATION.md` together.
 3. Run the complete checks from [CONTRIBUTING.md](CONTRIBUTING.md).
-4. Exercise all commands against the full target server and run the stable compatibility suite.
+4. Exercise all commands against the full target server and run the current contract suite.
 5. Merge a signed commit to a green `main` with no unresolved release-related pull requests.
 6. Create and push a signed annotated tag pointing to that exact `main` commit:
 

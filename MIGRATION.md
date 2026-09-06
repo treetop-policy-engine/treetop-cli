@@ -31,10 +31,9 @@ Use `/livez`, `/readyz`, and `/openapi.json` in scripts that previously used the
 removed health or OpenAPI aliases. CLI command names and matrix syntax still
 use the documented command surface; the SDK provides the strict wire contract.
 
-## Candidate verification and release order
+## Published dependencies and release order
 
-Cargo configuration pins the exact unmerged Rust SDK candidate; CI builds the
-exact REST candidate and exercises all commands against it. After approval,
-release Core, Bundle, REST, and the Rust SDK in that order. Switch the candidate
-patch to the SDK's registry release, refresh the lockfile, and repeat verification
-before releasing CLI 0.1.0. Do not merge or release before user approval.
+CLI requires the exact Rust SDK 0.1.0 package from crates.io. Its lockfile uses the
+registry release without candidate Git patches. CI exercises all commands against
+the immutable REST 0.1.0 release image. Release Core, Bundle, REST, and the Rust SDK
+in that order before releasing CLI 0.1.0.
