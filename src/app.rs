@@ -899,11 +899,7 @@ async fn show_status_and_version(context: &ExecContext) -> Result<()> {
     print_metadata(&status.policy_configuration.labels);
 
     println!("\n{}", title("Schema"));
-    if let Some(schema) = &status.policy_configuration.schema {
-        print_metadata(schema);
-    } else {
-        settings_line("Status:", "not loaded");
-    }
+    print_metadata(&status.policy_configuration.schema);
 
     let parallel: ParallelDisplay =
         serde_json::from_value(status.parallel_configuration.clone()).unwrap_or_default();
@@ -919,13 +915,7 @@ async fn show_status_and_version(context: &ExecContext) -> Result<()> {
 
     let limits = &status.request_limits;
     println!("\n{}", title("Request Limits"));
-    settings_line(
-        "Batch size:",
-        &limits.max_batch_size.map_or_else(
-            || "Unlimited (legacy server)".to_string(),
-            |value| value.to_string(),
-        ),
-    );
+    settings_line("Batch size:", &limits.max_batch_size.to_string());
     settings_line("Context bytes:", &limits.max_context_bytes.to_string());
     settings_line("Context depth:", &limits.max_context_depth.to_string());
     settings_line("Context keys:", &limits.max_context_keys.to_string());

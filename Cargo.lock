@@ -2081,7 +2081,7 @@ dependencies = [
 
 [[package]]
 name = "treetop-cli"
-version = "0.0.2"
+version = "0.1.0"
 dependencies = [
  "anyhow",
  "assert_cmd",
@@ -2105,9 +2105,8 @@ dependencies = [
 
 [[package]]
 name = "treetop-client"
-version = "0.0.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "108e82395bcd813dc5823c92b211a8a5c8ccbc9857fe0d0edc22569c53ab715a"
+version = "0.1.0"
+source = "git+https://github.com/treetop-policy-engine/treetop-client?rev=8edbf6693f873f7452e9a7c8cdb18ea5093969b4#8edbf6693f873f7452e9a7c8cdb18ea5093969b4"
 dependencies = [
  "ipnet",
  "reqwest",

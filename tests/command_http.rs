@@ -29,7 +29,7 @@ fn status_response() -> serde_json::Value {
                 "entries": 0,
                 "content": ""
             },
-            "schema": null
+            "schema": {"timestamp":"2026-08-12T00:00:00Z","sha256":"schema-empty","size":0,"entries":0,"content":""}
         },
         "parallel_configuration": {
             "cpu_count": 4,
@@ -54,11 +54,11 @@ fn status_response() -> serde_json::Value {
 
 fn version_response() -> serde_json::Value {
     json!({
-        "version": "0.0.10",
-        "core": {"version": "0.0.19", "cedar": "4.12.0"},
+        "version": "0.1.0",
+        "core": {"version": "0.1.0", "cedar": "4.12.0"},
         "policies": {
             "hash": "policy-hash",
-            "loaded_at": "2026-08-12T00:00:00Z"
+            "loaded_at": "2026-08-12T00:00:00Z", "label_set": null, "generation": 0
         },
         "schema": null
     })
@@ -100,11 +100,11 @@ async fn authorization_uses_validated_batch_response() {
                 "status": "success",
                 "result": {
                     "decision": "Allow",
-                    "version": {"hash": "policy-hash", "loaded_at": "2026-08-12T00:00:00Z"},
+                    "version": {"hash": "policy-hash", "loaded_at": "2026-08-12T00:00:00Z", "label_set": null, "generation": 0},
                     "policy_id": "allow-view"
                 }
             }],
-            "version": {"hash": "policy-hash", "loaded_at": "2026-08-12T00:00:00Z"},
+            "version": {"hash": "policy-hash", "loaded_at": "2026-08-12T00:00:00Z", "label_set": null, "generation": 0},
             "successful": 1,
             "failed": 0
         })))

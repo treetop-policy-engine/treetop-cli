@@ -1,0 +1,3 @@
+# Coordinated unmerged SDK candidate; switch to registry 0.1.0 after approval.
+[patch.crates-io]
+treetop-client = { git = "https://github.com/treetop-policy-engine/treetop-client", rev = "8edbf6693f873f7452e9a7c8cdb18ea5093969b4" }

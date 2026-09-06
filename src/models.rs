@@ -138,11 +138,7 @@ fn display_metadata(metadata: &Metadata) -> String {
 
 impl CliDisplay for PoliciesMetadata {
     fn display(&self) -> String {
-        let schema = self
-            .schema
-            .as_ref()
-            .map(display_metadata)
-            .unwrap_or_else(|| "Not loaded".to_string());
+        let schema = display_metadata(&self.schema);
         format!(
             "Allow upload: {}\nSchema validation mode: {}\nPolicies:\n{}\nHost labels:\n{}\nSchema:\n{}",
             self.allow_upload,
