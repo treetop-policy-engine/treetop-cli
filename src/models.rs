@@ -220,6 +220,14 @@ impl CliDisplay for UserPolicies {
     }
 }
 
+fn format_policy_version(version: &treetop_client::PolicyVersion) -> String {
+    let mut description = format!("{}; generation {}", version.hash, version.generation);
+    if let Some(labels) = &version.label_set {
+        description.push_str(&format!("; labels {labels}"));
+    }
+    description
+}
+
 pub(crate) trait DecisionView {
     fn decision(&self) -> DecisionBrief;
     fn policy_label(&self) -> String;
@@ -241,9 +249,13 @@ impl DecisionView for AuthorizeDecisionBrief {
                 "{} ({} @ {})",
                 success("Allow"),
                 self.policy_id,
-                self.version.hash
+                format_policy_version(&self.version)
             ),
-            DecisionBrief::Deny => format!("{} ({})", error("Deny"), self.version.hash),
+            DecisionBrief::Deny => format!(
+                "{} ({})",
+                error("Deny"),
+                format_policy_version(&self.version)
+            ),
         }
     }
 }
@@ -277,13 +289,17 @@ impl DecisionView for AuthorizeDecisionDetailed {
                 format!(
                     "{} ({})\n{}\n{}\n{}",
                     success("Allow"),
-                    self.version.hash,
+                    format_policy_version(&self.version),
                     "--- Matching policies ---".cyan(),
                     policies,
                     "---".cyan()
                 )
             }
-            DecisionBrief::Deny => format!("{} ({})", error("Deny"), self.version.hash),
+            DecisionBrief::Deny => format!(
+                "{} ({})",
+                error("Deny"),
+                format_policy_version(&self.version)
+            ),
         }
     }
 }
@@ -342,7 +358,10 @@ where
         })
         .collect::<Vec<_>>();
     let table = style.apply_to_table(Table::new(rows)).to_string();
-    format!("Version: {}\n{table}", response.version.hash)
+    format!(
+        "Version: {}\n{table}",
+        format_policy_version(&response.version)
+    )
 }
 
 #[cfg(test)]
@@ -354,6 +373,8 @@ mod tests {
         PolicyVersion {
             hash: "policy-hash".to_string(),
             loaded_at: "2026-08-12T00:00:00Z".to_string(),
+            label_set: Some("labels-hash".to_string()),
+            generation: 7,
         }
     }
 
@@ -380,6 +401,11 @@ mod tests {
         assert!(rendered.contains("Allow"));
         assert!(rendered.contains("allow-view"));
         assert!(rendered.contains("policy-hash"));
+        assert!(rendered.contains("generation 7"));
+        assert!(rendered.contains("labels labels-hash"));
+        let json = serde_json::to_value(&response).unwrap();
+        assert_eq!(json["version"]["generation"], 7);
+        assert_eq!(json["version"]["label_set"], "labels-hash");
     }
 
     #[test]
