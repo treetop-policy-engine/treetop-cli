@@ -12,7 +12,12 @@
 ## Boundaries
 
 - Keep `src/main.rs` thin and application behavior in the library.
-- Use exactly the published `treetop-client` version in `Cargo.toml` for all HTTP operations.
+- Use exactly the `treetop-client` version in `Cargo.toml` for all HTTP operations.
+  Coordinated changes may pin an exact unmerged SDK revision for verification;
+  switch to its registry release after approval and before publication.
+- Prefer correctness and strict, uniform project contracts over compatibility.
+  Remove obsolete defaults and deprecated APIs and document breaking migrations.
+  Do not merge or release coordinated changes before user approval.
 - Do not depend on `treetop-rest` or `treetop-core` and do not duplicate their wire models.
 - JSON and debug output operate on typed requests, validated responses, and redacted client errors.
 - Construct `Client<CanUpload>` only within upload commands and never log upload tokens.

@@ -6,6 +6,18 @@ All notable changes to this project are documented in this file. The format foll
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-09-06
+
+### Breaking changes
+
+- Adopt the strict Rust SDK and REST 0.1.0 contract. Required metadata is validated
+  before display, including schema configuration, batch limits, and complete state
+  versions. Remove legacy unlimited-batch and omitted-schema fallbacks.
+- Replace the historical compatibility matrix with immutable release integration.
+  Use declared label targets and format 2 bundles; see [MIGRATION.md](MIGRATION.md).
+- Require the published Rust SDK 0.1.0 package and pin the released REST 0.1.0
+  image for integration; remove temporary candidate Git dependencies.
+
 ### Security
 
 - Update locked h2 to 0.4.19 and chacha20 to 0.10.2. Use tabled 0.22 to remove
@@ -13,14 +25,11 @@ All notable changes to this project are documented in this file. The format foll
 
 ### Changed
 
-- Verify the command surface against REST v0.0.16 while retaining the existing
-  v0.0.10 through v0.0.12 compatibility checks.
 - Correct the advertised minimum Rust version to 1.89, matching the file-lock APIs
-  already used by Rustyline 18. CI now verifies that minimum explicitly.
-
-- Preserve label configuration and generation metadata from the updated Rust client in JSON output.
-  Human authorization output now shows the engine generation and available label identifier alongside
-  the policy hash. Generation is local to one engine instance and can restart on replacement.
+  already used by Rustyline 18. CI verifies that minimum explicitly.
+- Preserve label configuration and generation metadata in JSON output. Human
+  authorization output shows the engine generation and available label identifier
+  alongside the policy hash. Generation is local to one engine instance.
 
 ## [0.0.2] - 2026-08-15
 
@@ -48,6 +57,7 @@ All notable changes to this project are documented in this file. The format foll
 - Add stable/beta/nightly CI, Markdown lint, rolling `main-latest` binaries, and signed immutable
   release artifacts for static Linux x86_64/ARM64, Apple Silicon macOS, and Windows x86_64.
 
-[Unreleased]: https://github.com/treetop-policy-engine/treetop-cli/compare/v0.0.2...HEAD
+[Unreleased]: https://github.com/treetop-policy-engine/treetop-cli/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/treetop-policy-engine/treetop-cli/compare/v0.0.2...v0.1.0
 [0.0.2]: https://github.com/treetop-policy-engine/treetop-cli/releases/tag/v0.0.2
 [0.0.1]: https://github.com/treetop-policy-engine/treetop-cli/releases/tag/v0.0.1

@@ -117,12 +117,12 @@ The REPL preserves the last principal, action, resource type, resource ID, and a
 `check`. It retains the platform-standard config and history locations used by the bundled CLI.
 Use `show` to inspect active settings and paths, and `history` to list command history.
 
-## Compatibility
+## Current contract
 
-The unreleased CLI uses exactly `treetop-client = "=0.0.4"` and is tested against treetop-rest
-v0.0.10 through v0.0.12, and v0.0.16. Version 0.0.2 remains paired with client 0.0.3;
-version 0.0.1 remains paired with client 0.0.2. See
-[COMPATIBILITY.md](COMPATIBILITY.md) for the tested server matrix.
+CLI 0.1.0 uses exactly `treetop-client = "=0.1.0"` and targets REST 0.1.0.
+Early releases prioritize correctness over compatibility. Missing current metadata
+is an error; no old-server defaults or historical matrix remains. See
+[MIGRATION.md](MIGRATION.md) for the declared label targets and format 2 upgrade.
 
 ## Development
 
