@@ -6,6 +6,13 @@ All notable changes to this project are documented in this file. The format foll
 
 ## [Unreleased]
 
+### Changed
+
+- Update Rust dependencies, including dirs 7 and rstest 0.27, and refresh the
+  complete lockfile. Keep the published Rust SDK 0.1.0 dependency.
+- Refresh immutable GitHub Actions pins and use the Rust 1.98.1 Alpine builder
+  image pinned by digest.
+
 ## [0.1.0] - 2026-09-06
 
 ### Breaking changes
