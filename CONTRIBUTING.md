@@ -10,7 +10,7 @@ cargo clippy --locked --all-targets -- -D warnings
 cargo test --locked
 cargo check --locked --benches
 RUSTDOCFLAGS="-D warnings" cargo doc --locked --no-deps
-git ls-files -z '*.md' | xargs -0 npx --yes markdownlint-cli2@0.23.0 --config .markdownlint.json
+git ls-files -z '*.md' | xargs -0 npx --yes markdownlint-cli2@0.23.2 --config .markdownlint.json
 ```
 
 Tests that exercise HTTP behavior must bind an ephemeral loopback server and must not require Docker
