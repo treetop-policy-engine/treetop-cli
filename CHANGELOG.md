@@ -6,10 +6,22 @@ All notable changes to this project are documented in this file. The format foll
 
 ## [Unreleased]
 
+### Breaking changes
+
+- Require Rust 1.93.1 or newer for source builds, matching Rust SDK 0.2.0.
+  Upgrade the toolchain before building the CLI.
+
 ### Changed
 
+- Preserve function symbols in benchmark builds so Callgrind measures the matrix
+  functions instead of reporting zero instructions.
+
+- Refresh UUID, Gungraun 0.20, the complete lockfile, and reviewed immutable
+  Action pins ahead of the next release.
+
 - Update Rust dependencies, including dirs 7 and rstest 0.27, and refresh the
-  complete lockfile. Keep the published Rust SDK 0.1.0 dependency.
+  complete lockfile. Require the published Rust SDK 0.2.0 exactly and verify
+  commands against the immutable REST 0.2.0 image with Core/Bundle 0.3.0.
 - Refresh immutable GitHub Actions pins and use the Rust 1.98.1 Alpine builder
   image pinned by digest.
 

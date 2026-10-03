@@ -22,13 +22,13 @@ permissions:
 
 jobs:
   msrv:
-    name: Minimum Rust (1.89)
+    name: Minimum Rust (1.93.1)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: dtolnay/rust-toolchain@02cb101ec7c40f2c49e1d9714d64511d8e1b74de # master
+      - uses: dtolnay/rust-toolchain@7e38f4b43b4db5c8dd498af069a4f6196df1d067 # master
         with:
-          toolchain: 1.89.0
+          toolchain: 1.93.1
       - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2
       - run: cargo check --locked --all-targets
 
@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Check out repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Install clippy
         run: rustup component add clippy
@@ -47,7 +47,7 @@ jobs:
         run: cargo clippy --locked --all-targets -- -D warnings
 
       - name: Markdown lint
-        uses: DavidAnson/markdownlint-cli2-action@21c1be1b93ad9ed58fa840aacc3f279cde2a72ff # v24
+        uses: DavidAnson/markdownlint-cli2-action@21c1be1b93ad9ed58fa840aacc3f279cde2a72ff # v24.2.0
         with:
           config: ".markdownlint.json"
           globs: "**/*.md"
@@ -58,7 +58,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Check out repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Check Rust formatting
         run: cargo fmt --all -- --check
 
@@ -68,7 +68,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Check out repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Build documentation with warnings denied
         env:
           RUSTDOCFLAGS: -D warnings
@@ -100,7 +100,7 @@ jobs:
           - nightly
     steps:
       - name: Check out repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Cache cargo and target directories
         uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2
@@ -123,20 +123,20 @@ jobs:
           args: "--locked --release"
 
   server-current:
-    name: Current REST 0.1.0 release
+    name: Current REST 0.2.0 release
     if: "!startsWith(github.ref, 'refs/tags/')"
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
       - name: Check out repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Build CLI
         run: cargo build --locked
 
       - name: Exercise commands against treetop-rest
         env:
-          SERVER_IMAGE: ghcr.io/treetop-policy-engine/treetop-rest@sha256:d1fdd7536f31dde0b922f9516baa16a1f5ee7ecd4ab1c0892afd555128acc43e
+          SERVER_IMAGE: ghcr.io/treetop-policy-engine/treetop-rest@sha256:e29baeb5b498f21c72dccd9d08ab43198fa4705cecb40643d0ee97b63cc1c932
         run: |
           set -euo pipefail
 
@@ -203,7 +203,7 @@ jobs:
       contents: read
     steps:
       - name: Check out repository and tag history
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
 
@@ -254,7 +254,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Check out repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Validate version and changelog
         shell: bash
@@ -345,7 +345,7 @@ jobs:
             rustflags: "-C target-feature=+crt-static"
     steps:
       - name: Check out repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Buildx
         if: matrix.platform.kind == 'linux'
@@ -370,7 +370,7 @@ jobs:
 
       - name: Install stable Rust toolchain
         if: matrix.platform.kind == 'native'
-        uses: dtolnay/rust-toolchain@02cb101ec7c40f2c49e1d9714d64511d8e1b74de # master
+        uses: dtolnay/rust-toolchain@7e38f4b43b4db5c8dd498af069a4f6196df1d067 # master
         with:
           toolchain: stable
           targets: ${{ matrix.platform.target }}
@@ -477,7 +477,7 @@ jobs:
           )
 
       - name: Upload packaged artifact
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: binaries-${{ matrix.platform.os_name }}
           path: |
@@ -504,12 +504,12 @@ jobs:
       cancel-in-progress: ${{ github.ref == 'refs/heads/main' }}
     steps:
       - name: Check out repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
 
       - name: Download packaged artifacts
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
           pattern: binaries-*
           path: dist
