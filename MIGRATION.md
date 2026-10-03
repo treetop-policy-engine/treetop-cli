@@ -1,4 +1,18 @@
-# Breaking 0.1.0 migration
+# Migration guide
+
+## CLI 0.2.0 with REST 0.2.0
+
+Install the CLI 0.2.0 native archive for your platform. Source builds require
+Rust 1.93.1 or newer and the exact published Rust SDK 0.2.0 dependency. CLI
+flags, output modes, configuration, history, and the strict HTTP JSON contract
+are unchanged. CI tests every command against the immutable REST 0.2.0 image
+with Core and Bundle 0.3.0.
+
+Before upgrading the server, rebuild and re-sign policy archives with Bundle
+CLI 0.3.0 (or Bundle Action v3). REST 0.2.0 rejects older generator versions,
+including existing archives whose source manifests use format 2.
+
+## Breaking 0.1.0 migration
 
 Upgrade CLI, the Rust SDK, and REST to the coordinated 0.1.0 contract. Early
 releases prioritize correctness and one strict contract over compatibility.
@@ -31,9 +45,9 @@ Use `/livez`, `/readyz`, and `/openapi.json` in scripts that previously used the
 removed health or OpenAPI aliases. CLI command names and matrix syntax still
 use the documented command surface; the SDK provides the strict wire contract.
 
-## Published dependencies and release order
+### Published dependencies and release order
 
-CLI requires the exact Rust SDK 0.1.0 package from crates.io. Its lockfile uses the
+CLI requires the exact Rust SDK 0.2.0 package from crates.io. Its lockfile uses the
 registry release without candidate Git patches. CI exercises all commands against
-the immutable REST 0.1.0 release image. Release Core, Bundle, REST, and the Rust SDK
-in that order before releasing CLI 0.1.0.
+the immutable REST 0.2.0 release image. Release Core, Bundle, REST, and the Rust SDK
+in that order before releasing CLI 0.2.0.

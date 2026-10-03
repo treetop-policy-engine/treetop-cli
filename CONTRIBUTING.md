@@ -13,6 +13,16 @@ RUSTDOCFLAGS="-D warnings" cargo doc --locked --no-deps
 git ls-files -z '*.md' | xargs -0 npx --yes markdownlint-cli2@0.23.2 --config .markdownlint.json
 ```
 
+When updating benchmark tooling, run the actual measurements as well:
+
+```bash
+cargo install gungraun-runner --version 0.20.0 --locked
+cargo bench --locked
+```
+
+All three matrix benchmarks must report nonzero instruction counts. The bench
+profile retains the function symbols Callgrind needs to select the measured region.
+
 Tests that exercise HTTP behavior must bind an ephemeral loopback server and must not require Docker
 or a public service. Add command-level coverage for output, configuration precedence, failure exit
 status, and secret redaction when changing those contracts.
