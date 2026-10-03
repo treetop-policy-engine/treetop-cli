@@ -20,7 +20,7 @@ SHA-256 file, and place `treetop-cli` (or `treetop-cli.exe`) on your `PATH`.
 Rolling builds from the latest green `main` are published as
 [`main-latest`](https://github.com/treetop-policy-engine/treetop-cli/releases/tag/main-latest).
 They report a
-version such as `v0.0.2+main.g0123456789ab`; stable release builds report `v0.0.2`.
+version such as `v0.2.0+main.g0123456789ab`; stable release builds report `v0.2.0`.
 
 The CLI is distributed as GitHub release binaries only and is not published to crates.io.
 
