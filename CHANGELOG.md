@@ -6,6 +6,8 @@ All notable changes to this project are documented in this file. The format foll
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-03
+
 ### Breaking changes
 
 - Require Rust 1.93.1 or newer for source builds, matching Rust SDK 0.2.0.
@@ -76,7 +78,9 @@ All notable changes to this project are documented in this file. The format foll
 - Add stable/beta/nightly CI, Markdown lint, rolling `main-latest` binaries, and signed immutable
   release artifacts for static Linux x86_64/ARM64, Apple Silicon macOS, and Windows x86_64.
 
-[Unreleased]: https://github.com/treetop-policy-engine/treetop-cli/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/treetop-policy-engine/treetop-cli/compare/v0.2.0...HEAD
 [0.1.0]: https://github.com/treetop-policy-engine/treetop-cli/compare/v0.0.2...v0.1.0
 [0.0.2]: https://github.com/treetop-policy-engine/treetop-cli/releases/tag/v0.0.2
 [0.0.1]: https://github.com/treetop-policy-engine/treetop-cli/releases/tag/v0.0.1
+
+[0.2.0]: https://github.com/treetop-policy-engine/treetop-cli/compare/v0.1.0...v0.2.0
