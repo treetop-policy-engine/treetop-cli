@@ -2125,9 +2125,9 @@ dependencies = [
 
 [[package]]
 name = "treetop-client"
-version = "0.2.0"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7a444475351768682027a5eb4a8bb4d68f4fc4122b75dbe48981a7834e10d661"
+checksum = "1153ab5054ebc6fcf2d61a2c8db1c544f0ca5d1a2a6f215af113e3b929f03dde"
 dependencies = [
  "ipnet",
  "reqwest",

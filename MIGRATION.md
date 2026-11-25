@@ -1,6 +1,9 @@
 # Migration guide
 
-## Unreleased
+## CLI 0.3.0 with REST 0.3.0
+
+The CLI uses Rust SDK 0.2.1 with REST 0.3.0. Before updating the server,
+rebuild and re-sign archives with Bundle CLI 0.4.0.
 
 Upgrade Rust to 1.95.0 or later before building the CLI from source.
 Rustyline 19 uses the `cfg_select!` macro stabilized in Rust 1.95.

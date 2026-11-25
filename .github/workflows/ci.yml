@@ -123,7 +123,7 @@ jobs:
           args: "--locked --release"
 
   server-current:
-    name: Current REST 0.2.0 release
+    name: Current REST 0.3.0 release
     if: "!startsWith(github.ref, 'refs/tags/')"
     runs-on: ubuntu-24.04
     timeout-minutes: 30
@@ -136,7 +136,7 @@ jobs:
 
       - name: Exercise commands against treetop-rest
         env:
-          SERVER_IMAGE: ghcr.io/treetop-policy-engine/treetop-rest@sha256:e29baeb5b498f21c72dccd9d08ab43198fa4705cecb40643d0ee97b63cc1c932
+          SERVER_IMAGE: ghcr.io/treetop-policy-engine/treetop-rest@sha256:69d8cde73510f0219a0359f5baa5cf049f98b8eab87148540e72ac385725c772
         run: |
           set -euo pipefail
 

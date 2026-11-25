@@ -119,7 +119,7 @@ Use `show` to inspect active settings and paths, and `history` to list command h
 
 ## Current contract
 
-The CLI uses exactly `treetop-client = "=0.2.0"` and targets REST 0.2.0.
+The CLI uses exactly `treetop-client = "=0.2.1"` and targets REST 0.3.0.
 Source builds require Rust 1.95.0 or newer.
 Early releases prioritize correctness over compatibility. Missing current metadata
 is an error; no old-server defaults or historical matrix remains. See

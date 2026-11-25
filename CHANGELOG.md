@@ -13,6 +13,7 @@ All notable changes to this project are documented in this file. The format foll
 
 ### Changed
 
+- Use the published Rust SDK 0.2.1 and test CLI commands against REST 0.3.0.
 - Update the interactive editor to Rustyline 19 and refresh HTTP transport dependencies.
 
 ## [0.2.0] - 2026-10-03
