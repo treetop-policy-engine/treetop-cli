@@ -6,7 +6,7 @@ description = "Command-line client and interactive REPL for Treetop authorizatio
 license = "MIT"
 repository = "https://github.com/treetop-policy-engine/treetop-cli"
 publish = false
-rust-version = "1.93.1"
+rust-version = "1.95.0"
 build = "build.rs"
 autobenches = false
 

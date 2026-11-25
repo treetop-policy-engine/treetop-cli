@@ -1,5 +1,10 @@
 # Migration guide
 
+## Unreleased
+
+Upgrade Rust to 1.95.0 or later before building the CLI from source.
+Rustyline 19 uses the `cfg_select!` macro stabilized in Rust 1.95.
+
 ## CLI 0.2.0 with REST 0.2.0
 
 Install the CLI 0.2.0 native archive for your platform. Source builds require
