@@ -188,7 +188,12 @@ async fn server_url_precedence_is_cli_then_env_then_config() {
     }
 
     let directory = tempdir().unwrap();
-    let config_directory = directory.path().join("treetop-cli");
+    let config_root = if cfg!(target_os = "macos") {
+        directory.path().join("Library/Application Support")
+    } else {
+        directory.path().to_owned()
+    };
+    let config_directory = config_root.join("treetop-cli");
     fs::create_dir_all(&config_directory).unwrap();
     fs::write(
         config_directory.join("config.toml"),
@@ -198,6 +203,7 @@ async fn server_url_precedence_is_cli_then_env_then_config() {
 
     command()
         .env("XDG_CONFIG_HOME", directory.path())
+        .env("HOME", directory.path())
         .env_remove("TREETOP_CLI_SERVER_URL")
         .arg("metrics")
         .assert()
@@ -206,6 +212,7 @@ async fn server_url_precedence_is_cli_then_env_then_config() {
 
     command()
         .env("XDG_CONFIG_HOME", directory.path())
+        .env("HOME", directory.path())
         .env("TREETOP_CLI_SERVER_URL", env_server.uri())
         .arg("metrics")
         .assert()
@@ -214,6 +221,7 @@ async fn server_url_precedence_is_cli_then_env_then_config() {
 
     command()
         .env("XDG_CONFIG_HOME", directory.path())
+        .env("HOME", directory.path())
         .env("TREETOP_CLI_SERVER_URL", env_server.uri())
         .args(["--server-url", &cli_server.uri(), "metrics"])
         .assert()

@@ -6,6 +6,15 @@ All notable changes to this project are documented in this file. The format foll
 
 ## [Unreleased]
 
+### Breaking changes
+
+- Source builds require Rust 1.95.0 for Rustyline 19. Upgrade the toolchain
+  before building the CLI. Prebuilt binaries have no Rust toolchain requirement.
+
+### Changed
+
+- Update the interactive editor to Rustyline 19 and refresh HTTP transport dependencies.
+
 ## [0.2.0] - 2026-10-03
 
 ### Breaking changes
